@@ -74,6 +74,25 @@ abstract class Generator {
         return $path;
     }
 
+	/**
+	 * Get the table structure
+	 *
+	 * @param string
+	 * @return array
+	 */
+	protected function describeTable($table) {
+		$fields = \DB::select("DESCRIBE $table");
+		$cols = array();
+		foreach($fields as $field) {
+			if ($field->Key !== 'PRI') $cols[] = [
+				'name' => $field->Field, 
+				'type' => $field->Type, 
+				'default' => $field->Default
+			];
+		}
+		return $cols;
+	}
+	
     /**
      * Determines whether the specified template
      * points to the scaffolds directory

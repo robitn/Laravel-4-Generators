@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * {{className}} summary
+ *
+ * {{className}} description.
+ *
+ * @author 
+ * @version 
+ * @copyright 
+ * @package 
+ */
+
+/**
+ * Define DocBlock
+ */
+
 class {{className}} extends BaseController {
 
 	/**

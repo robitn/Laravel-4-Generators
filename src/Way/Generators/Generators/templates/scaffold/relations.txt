@@ -1,0 +1,12 @@
+
+	/**
+	 * Establish relationships
+	 * Assumes belongsTo, edit as needed.
+	 *
+	 * http://four.laravel.com/docs/eloquent#relationships
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\...
+	 */
+	public function {{name}}() {
+        return $this->belongsTo('{{model}}');
+	}

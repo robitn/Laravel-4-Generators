@@ -7,12 +7,15 @@ class {{className}} extends Seeder {
 		// Uncomment the below to wipe the table clean before populating
 		// DB::table('{{models}}')->truncate();
 
-		${{models}} = array(
+		${{models}} = [
+			[
+				{{tableFields}}
+			]
+		];
 
-		);
-
-		// Uncomment the below to run the seeder
-		// DB::table('{{models}}')->insert(${{models}});
+		foreach(${{models}} as $row) {
+			{{modelName}}::create($row);
+		}
 	}
 
 }

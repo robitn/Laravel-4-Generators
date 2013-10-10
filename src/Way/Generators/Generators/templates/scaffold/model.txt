@@ -1,7 +1,74 @@
 <?php
 
-class {{className}} extends Eloquent {
-	protected $guarded = array();
+/**
+ * {{className}} summary
+ *
+ * {{className}} description.
+ *
+ * @author 
+ * @version 
+ * @copyright 
+ * @package 
+ */
 
-	public static $rules = array({{rules}});
+/* 
+ ** The column list for {{className}} **
+
+{{columnList}}
+ */
+
+class {{className}} extends AppModel {
+
+	/**
+	 * The attributes excluded from the model's JSON response.
+	 *
+	 * @var array
+	 */
+ 	protected $hidden = array(
+ 		'deleted_at'
+ 	);
+
+	/**
+	 * The attributes white-listed for mass assignment.
+	 *
+	 * @var array
+	 */
+	protected $fillable = array();
+
+	/**
+	 * Enable the softDelete feature.
+	 * 
+	 * Ref: http://four.laravel.com/docs/eloquent#soft-deleting
+	 *
+	 * @var boolean
+	 */
+	protected $softDelete = true;
+
+	/**
+	 * Specify the guarded table fields.
+	 *
+	 * Ref: http://four.laravel.com/docs/eloquent#mass-assignment
+	 *
+	 * @var array
+	 */
+	// protected $guarded = array();
+
+	/**
+	 * This model's validation rules.
+	 *
+	 * @var array
+	 */
+    public static $rules = array(
+		{{rules}}
+    );
+
+	/**
+	 * Establish relationships
+	 *
+	 * http://four.laravel.com/docs/eloquent#relationships
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\...
+	 */
+	{{relations}}
+
 }

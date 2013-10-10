@@ -15,8 +15,18 @@ class SeedGenerator extends Generator {
     {
         $this->template = $this->file->get($template);
         $models = strtolower(str_replace('TableSeeder', '', $className));
+        $modelName = Illuminate\Support\Pluralizer::singular(str_replace('TableSeeder', '', $className));
+		
+		$fields = \DB::select("DESCRIBE $models");
+		$table = array();
+		foreach($fields as $field) {
+			if ($field->Key !== 'PRI') $table[] = "\t\t\t\t'$field->Field' => '$field->Default'";
+		}
+		$tableFields = implode(",\n", $table);
 
         $this->template = str_replace('{{className}}', $className, $this->template);
+        $this->template = str_replace('{{modelName}}', $modelName, $this->template);
+        $this->template = str_replace('{{tableFields}}', trim($tableFields), $this->template);
 
         return str_replace('{{models}}', $models, $this->template);
     }

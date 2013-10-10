@@ -4,5 +4,6 @@
 			$table->increments('id');
 			{{methods}}
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
